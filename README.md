@@ -2,6 +2,12 @@
 
 ![Capa do Jogo](Imagens/CODED_Cover_Films.jpg)
 
+Imagem retirada do trailer do documentário "Coded Bias" disponivel na netflix:
+
+```
+https://www.netflix.com/br/title/81328723
+```
+
 ## 🎯 Objetivo do Jogo
 
 Este quiz foi desenvolvido para conscientizar sobre como os algoritmos e sistemas de IA podem perpetuar vieses raciais, especialmente quando utilizam dados históricos contaminados por preconceitos estruturais.
@@ -71,6 +77,7 @@ Entender esses vieses é o primeiro passo para:
 ├── script.js                # Lógica do jogo
 ├── styles.css               # Estilos visuais
 └── README.md                # Este arquivo
+
 ```
 
 ## 🚀 Como Executar
@@ -78,3 +85,7 @@ Entender esses vieses é o primeiro passo para:
 1. Clone o repositório
 2. Abra `index.html` em qualquer navegador moderno
 3. Ou acesse online: ainda irei colocar o link quando hospedar
+
+```
+
+```
