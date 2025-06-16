@@ -156,6 +156,25 @@ const questions = [
 let selectedQuestions = [];
 let answeredCount = 0;
 
+/* ===================== */
+/* FUNÇÕES DE TRANSIÇÃO */
+/* ===================== */
+function scrollToTop() {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+}
+
+function switchScreen(hideId, showId) {
+    document.getElementById(hideId).classList.add('hidden');
+    document.getElementById(showId).classList.remove('hidden');
+    scrollToTop();
+}
+
+/* ===================== */
+/* FUNÇÕES PRINCIPAIS */
+/* ===================== */
 function startQuiz() {
     const name = document.getElementById('player-name').value.trim();
     if (!name) {
@@ -163,8 +182,7 @@ function startQuiz() {
         return;
     }
 
-    document.getElementById('start-screen').classList.add('hidden');
-    document.getElementById('quiz-screen').classList.remove('hidden');
+    switchScreen('start-screen', 'quiz-screen');
     document.getElementById('display-name').textContent = name;
 
     answeredCount = 0;
@@ -173,13 +191,11 @@ function startQuiz() {
 }
 
 function showInfo() {
-    document.getElementById('start-screen').classList.add('hidden');
-    document.getElementById('info-screen').classList.remove('hidden');
+    switchScreen('start-screen', 'info-screen');
 }
 
 function hideInfo() {
-    document.getElementById('info-screen').classList.add('hidden');
-    document.getElementById('start-screen').classList.remove('hidden');
+    switchScreen('info-screen', 'start-screen');
 }
 
 function generateQuiz() {
@@ -200,6 +216,7 @@ function generateQuiz() {
     });
 
     document.getElementById('check-answers-btn').disabled = true;
+    scrollToTop(); // Garante que o quiz comece no topo
 }
 
 function updateAnswerCount() {
@@ -211,23 +228,18 @@ function updateAnswerCount() {
     });
 
     updateProgress();
+    document.getElementById('check-answers-btn').disabled = answeredCount !== selectedQuestions.length;
 
-    const checkBtn = document.getElementById('check-answers-btn');
-    checkBtn.disabled = answeredCount !== selectedQuestions.length;
-
-    // Adiciona animação à questão respondida
+    // Animação da questão respondida
     const checkedInput = event.target.closest('.question-box');
     if (checkedInput) {
         checkedInput.classList.add('answered');
-        setTimeout(() => {
-            checkedInput.classList.remove('answered');
-        }, 500);
+        setTimeout(() => checkedInput.classList.remove('answered'), 500);
     }
 }
 
 function updateProgress() {
-    document.getElementById('progress-text').textContent =
-        `${answeredCount}/${selectedQuestions.length} respondidas`;
+    document.getElementById('progress-text').textContent = `${answeredCount}/${selectedQuestions.length} respondidas`;
 }
 
 function checkAnswers() {
@@ -236,9 +248,11 @@ function checkAnswers() {
         return;
     }
 
-    document.getElementById('quiz-screen').classList.add('hidden');
-    document.getElementById('results-screen').classList.remove('hidden');
+    switchScreen('quiz-screen', 'results-screen');
+    showResults();
+}
 
+function showResults() {
     const container = document.getElementById('results-container');
     container.innerHTML = '';
 
@@ -250,22 +264,15 @@ function checkAnswers() {
         const value = selected ? parseInt(selected.value) : -1;
         const isCorrect = value === q.answer;
 
-        if (isCorrect) correctCount++;
-        else wrongCount++;
+        isCorrect ? correctCount++ : wrongCount++;
 
         const div = document.createElement('div');
-        div.classList.add('question-box');
-        div.classList.add(isCorrect ? 'correct' : 'wrong');
-
+        div.classList.add('question-box', isCorrect ? 'correct' : 'wrong');
         div.innerHTML = `<p>${i + 1}. ${q.question}</p>` +
             q.options.map((opt, idx) => {
                 const isChecked = idx === value;
                 const isRightAnswer = idx === q.answer;
-                let highlightClass = '';
-
-                if (isRightAnswer && !isCorrect) {
-                    highlightClass = 'highlight-correct';
-                }
+                let highlightClass = isRightAnswer && !isCorrect ? 'highlight-correct' : '';
 
                 return `<label class="${highlightClass}">
                     <input type="radio" disabled ${isChecked ? 'checked' : ''}>
@@ -276,21 +283,22 @@ function checkAnswers() {
         container.appendChild(div);
     });
 
-    // Atualiza contagem de acertos/erros
     document.querySelector('.correct-score').textContent = correctCount;
     document.querySelector('.wrong-score').textContent = wrongCount;
 }
 
 function showCredits() {
-    document.getElementById('results-screen').classList.add('hidden');
-    document.getElementById('credits-screen').classList.remove('hidden');
+    switchScreen('results-screen', 'credits-screen');
+    renderCredits();
+}
 
+function renderCredits() {
     const list = document.getElementById('credits-list');
     list.innerHTML = '';
 
     const members = [
         { name: "Ana Caroline Gomes de Lima e Silva", photo: "Imagens/photo.png" },
-        { name: "Erisvaldo Cleiton de Almeida Lima", photo: "Imagens/Eu02.jpg" },
+        { name: "Erisvaldo Cleiton de Almeida Lima", photo: "Imagens/Cleiton.jpg" },
         { name: "Ially Lohrany Ramos Lima", photo: "Imagens/photo.png" },
         { name: "Igor Enrique Pereira de Lima", photo: "Imagens/photo.png" },
         { name: "João Lucas Gomes Nogueira", photo: "Imagens/photo.png" },
@@ -313,7 +321,11 @@ function showCredits() {
 }
 
 function restartQuiz() {
-    document.getElementById('credits-screen').classList.add('hidden');
-    document.getElementById('start-screen').classList.remove('hidden');
+    switchScreen('credits-screen', 'start-screen');
     document.getElementById('player-name').value = '';
 }
+
+// Opcional: Rolagem inicial para o topo
+document.addEventListener('DOMContentLoaded', () => {
+    scrollToTop();
+});
