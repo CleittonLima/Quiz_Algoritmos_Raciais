@@ -85,7 +85,3 @@ Entender esses vieses é o primeiro passo para:
 1. Clone o repositório
 2. Abra `index.html` em qualquer navegador moderno
 3. Ou acesse online: ainda irei colocar o link quando hospedar
-
-```
-
-```
