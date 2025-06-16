@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz: Algoritmo justo ou racista?</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div id="start-screen">
+        <h1>Quiz: Algoritmo justo ou racista?</h1>
+        <input type="text" id="player-name" placeholder="Digite seu nome">
+        <div class="start-button-container">
+            <button class="btn" onclick="startQuiz()">Play</button>
+            <button class="btn info-btn" onclick="showInfo()">Como jogar</button>
+        </div>
+    </div>
+
+    <div id="info-screen" class="hidden">
+        <h2>Sobre o Jogo</h2>
+        <div class="info-content">
+            <p>Este quiz tem 10 questões sobre algoritmos e vieses raciais.</p>
+            <p>Você precisa responder todas as questões antes de verificar as respostas.</p>
+            <h3>Objetivo do Jogo</h3>
+            <p>O objetivo é testar seu conhecimento sobre justiça algorítmica e identificar possíveis vieses em sistemas
+                de IA.</p>
+            <p>Além de ter uma percepção se o racismo está apenas no Algoritmo</p>
+            <br>
+            <div style="text-align: center; font-style: italic; margin: 20px 0;">
+                <p>"Algorithms are opinions embedded in code"</p>
+                <p>("Algoritmos são opiniões embutidas em código")</p>
+                <p>— Cathy O'Neil, <i>Weapons of Math Destruction</i> (2016)</p>
+            </div>
+        </div>
+        <button class="btn back-btn" onclick="hideInfo()">Voltar</button>
+    </div>
+
+    <div id="quiz-screen" class="hidden">
+        <div id="player-info">
+            <img id="player-photo" src="Imagens/CODED_Cover_Films.jpg" alt="Foto do jogador">
+            <span id="display-name"></span>
+        </div>
+        <div id="quiz-container"></div>
+        <div id="progress-container">
+            <span id="progress-text">0/10 respondidas</span>
+        </div>
+        <button id="check-answers-btn" class="btn" disabled onclick="checkAnswers()">Verificar Respostas</button>
+    </div>
+
+    <div id="results-screen" class="hidden">
+        <div id="score-container">
+            <h2>Resultados</h2>
+            <div class="score-display">
+                <span class="correct-score">0</span> acertos |
+                <span class="wrong-score">0</span> erros
+            </div>
+        </div>
+        <div id="results-container"></div>
+        <button class="btn" onclick="showCredits()">Ver Créditos</button>
+    </div>
+
+    <div id="credits-screen" class="hidden">
+        <h2>Participantes</h2>
+        <div id="credits-list" class="credits-grid">
+        </div>
+        <button class="btn" onclick="restartQuiz()">Jogar Novamente</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
