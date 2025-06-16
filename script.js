@@ -289,16 +289,16 @@ function showCredits() {
     list.innerHTML = '';
 
     const members = [
-        { name: "Ana Caroline Gomes de Lima e Silva", photo: "imagens/photo.png" },
-        { name: "Erisvaldo Cleiton de Almeida Lima", photo: "imagens/Eu02.jpg" },
-        { name: "Ially Lohrany Ramos Lima", photo: "imagens/photo.png" },
-        { name: "Igor Enrique Pereira de Lima", photo: "imagens/photo.png" },
-        { name: "João Lucas Gomes Nogueira", photo: "imagens/photo.png" },
-        { name: "Jonas Pereira da Silva", photo: "imagens/photo.png" },
-        { name: "José Vitor da Silva Lima", photo: "imagens/photo.png" },
-        { name: "Lyan Kael Bezerra Martins", photo: "imagens/photo.png" },
-        { name: "Rodrigo dos Santos Bezerra", photo: "imagens/photo.png" },
-        { name: "Vinícius Diniz Aquino", photo: "imagens/photo.png" },
+        { name: "Ana Caroline Gomes de Lima e Silva", photo: "Imagens/photo.png" },
+        { name: "Erisvaldo Cleiton de Almeida Lima", photo: "Imagens/Eu02.jpg" },
+        { name: "Ially Lohrany Ramos Lima", photo: "Imagens/photo.png" },
+        { name: "Igor Enrique Pereira de Lima", photo: "Imagens/photo.png" },
+        { name: "João Lucas Gomes Nogueira", photo: "Imagens/photo.png" },
+        { name: "Jonas Pereira da Silva", photo: "Imagens/photo.png" },
+        { name: "José Vitor da Silva Lima", photo: "Imagens/photo.png" },
+        { name: "Lyan Kael Bezerra Martins", photo: "Imagens/photo.png" },
+        { name: "Rodrigo dos Santos Bezerra", photo: "Imagens/photo.png" },
+        { name: "Vinícius Diniz Aquino", photo: "Imagens/photo.png" },
     ];
 
     members.forEach(m => {
