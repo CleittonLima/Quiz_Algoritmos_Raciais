@@ -1,6 +1,6 @@
 # 📝 Quiz: Algoritmo Justo ou Racista?
 
-![Capa do Jogo](Imagens/CODED_Cover_Films.jpg)
+![Capa do Jogo](Imagens/Avatar.png)
 
 Imagem retirada do trailer do documentário "Coded Bias" disponivel na netflix:
 
