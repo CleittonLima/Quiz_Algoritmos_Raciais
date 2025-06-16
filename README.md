@@ -2,11 +2,6 @@
 
 ![Capa do Jogo](Imagens/Avatar.png)
 
-Imagem retirada do trailer do documentário "Coded Bias" disponivel na netflix:
-
-```
-https://www.netflix.com/br/title/81328723
-```
 
 ## 🎯 Objetivo do Jogo
 
